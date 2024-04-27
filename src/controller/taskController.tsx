@@ -1,6 +1,6 @@
 import { Task } from "@/types"
 
-//Reference: Fullstækk LMS/kurs
+// Reference: Fullstækk LMS/kurs
 const API_URL = 'http://localhost:3000/api/restapi';
 
 export const taskFetch = async (
@@ -11,7 +11,11 @@ export const taskFetch = async (
 
   console.log('Fetching tasks from:', apiUrl);
 
-  const response = await fetch(apiUrl, { method: 'GET' });
+  // Specify CORS mode in fetch options
+  const response = await fetch(apiUrl, { 
+    method: 'GET',
+    mode: 'cors' // Set CORS mode to 'cors'
+  });
 
   if (!response.ok) {
     throw new Error(`Failed to fetch tasks. Status: ${response.status}`);
